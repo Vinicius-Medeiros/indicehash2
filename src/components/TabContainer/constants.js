@@ -33,5 +33,5 @@ export const tabsStyle = {
 
 export const tabList = [
     { component: <Tab label='Índice Hash - Estático' key='tab - 1' value='1' /> },
-    { component: <Tab label='Estatísticas - Perfomance' key='tab - 2' value='2' /> },
+    { component: <Tab label='Estatísticas - Perfomance' key='tab - 2' value='2' disabled /> },
 ]
