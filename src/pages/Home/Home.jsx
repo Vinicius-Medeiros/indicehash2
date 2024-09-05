@@ -61,20 +61,21 @@ const Home = () => {
                     const numeroOverflow = arrBuckets[indiceNoBucket][0].overflow
 
                     if (arrBuckets[indiceNoBucket][0].bucket[numeroOverflow].length < tamanhoBucket) {
+                        if (arrBuckets[indiceNoBucket][0].bucket[0].length === tamanhoBucket) {
+                            arrBuckets[indiceNoBucket][0].colisao += 1
+                        }
                         arrBuckets[indiceNoBucket][0].bucket[numeroOverflow].push({ palavra, index });
                     } else {
+                        arrBuckets[indiceNoBucket][0].colisao += 1
                         if (arrBuckets[indiceNoBucket][0].bucket[numeroOverflow + 1]) {
                             if (arrBuckets[indiceNoBucket][0].bucket[numeroOverflow + 1].length < tamanhoBucket) {
-                                arrBuckets[indiceNoBucket][0].colisao += 1
                                 arrBuckets[indiceNoBucket][0].bucket[numeroOverflow + 1].push({ palavra, index });
                             } else {
-                                arrBuckets[indiceNoBucket][0].colisao += 1
                                 arrBuckets[indiceNoBucket][0].overflow += 1
                                 arrBuckets[indiceNoBucket][0].bucket.push([]);
                                 arrBuckets[indiceNoBucket][0].bucket[numeroOverflow + 1].push({ palavra, index });
                             }
                         } else {
-                            arrBuckets[indiceNoBucket][0].colisao += 1
                             arrBuckets[indiceNoBucket][0].overflow += 1
                             arrBuckets[indiceNoBucket][0].bucket.push([]);
                             arrBuckets[indiceNoBucket][0].bucket[numeroOverflow + 1].push({ palavra, index });
@@ -87,6 +88,7 @@ const Home = () => {
             let totalOverflow = 0
             arrBuckets.map(bucketStruct => {
                 totalOverflow += bucketStruct[0].overflow
+                totalColisao += bucketStruct[0].colisao
             })
             setOverflow(totalOverflow)
             setColisao(totalColisao)

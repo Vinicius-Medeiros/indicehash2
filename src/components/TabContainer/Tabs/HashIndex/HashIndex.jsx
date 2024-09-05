@@ -2,6 +2,7 @@ import { Button, Grid2 as Grid, Stack, TextField } from "@mui/material";
 import React from "react";
 import useHashIndexContext from "../../../../hooks/useHashIndexContext";
 import { calcBucketIndex } from "../../../../utils/calcBucketIndex";
+import { formatPercentage } from "../../../../utils/formatPercentage";
 import { hashFunction } from "../../../../utils/hashFunction";
 
 const HashIndex = () => {
@@ -441,6 +442,54 @@ const HashIndex = () => {
                     }}
                     label="Quantidade de acessos que foram feitos a disco"
                     value={quantidadeDeAcessos}
+                />
+            </Grid>
+            <Grid size={{ md: 3 }}>
+                <TextField
+                    fullWidth
+                    variant="outlined"
+                    focused
+                    sx={{
+                        "& :hover": {
+                            cursor: "not-allowed",
+                            pointerEvents: "none",
+                        },
+                        cursor: "not-allowed",
+                        pointerEvents: "none",
+                    }}
+                    slotProps={{
+                        textField: {
+                            InputProps: {
+                                readOnly: true,
+                            },
+                        },
+                    }}
+                    label="Percentual de Colisões"
+                    value={ colisao === 0 ? '%' : `${formatPercentage((colisao / 466549).toFixed(2))}` }
+                />
+            </Grid>
+            <Grid size={{ md: 3 }}>
+                <TextField
+                    fullWidth
+                    variant="outlined"
+                    focused
+                    sx={{
+                        "& :hover": {
+                            cursor: "not-allowed",
+                            pointerEvents: "none",
+                        },
+                        cursor: "not-allowed",
+                        pointerEvents: "none",
+                    }}
+                    slotProps={{
+                        textField: {
+                            InputProps: {
+                                readOnly: true,
+                            },
+                        },
+                    }}
+                    label="Percentual de Overflows"
+                    value={ overflow === 0 ? '%' : `${formatPercentage((overflow / 466549).toFixed(8))}` }
                 />
             </Grid>
         </Grid>
