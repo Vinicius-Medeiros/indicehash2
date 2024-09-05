@@ -1,5 +1,5 @@
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Divider, Tabs } from "@mui/material";
+import { Tabs } from "@mui/material";
 import React from "react";
 import { HashIndex } from "./Tabs/HashIndex";
 import Statistics from "./Tabs/Statistics/Statistics";
@@ -37,7 +37,6 @@ const TabContainer = () => {
 						sx={tabsStyle}
 						value={false}
 					>
-						<Divider />
 						{tab.tabContent}
 					</Tabs>
 				</TabPanel>
