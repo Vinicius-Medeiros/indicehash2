@@ -92,15 +92,19 @@ const HashIndex = () => {
             // console.log(
             //     `A palavra "${objetoARetornar.palavra}" está na página no disco de número = ${objetoARetornar.index}`
             // );
-            setQuantidadeAcessosIndice(sumIteracoes)
-            setTuplaIndice(objetoARetornar)
-            const isPresente = paginas[objetoARetornar.index].includes(
-                objetoARetornar.palavra
-            );
-            if (isPresente) {
-                // console.log(
-                //     `foi confirmado que a palavra se encontra na página no disco de número = ${objetoARetornar.index} `
-                // );
+            if (objetoARetornar) {
+                setQuantidadeAcessosIndice(sumIteracoes)
+                setTuplaIndice(objetoARetornar)
+                const isPresente = paginas[objetoARetornar.index].includes(
+                    objetoARetornar.palavra
+                );
+                if (isPresente) {
+                    showAlert(`Foi confirmado... Palavra esta contida de fato na página: ${objetoARetornar.index}`, 'success')
+                } else { 
+                    showAlert('Palavra não esta contido na pagina esperada!', 'info')
+                }
+            } else {
+                showAlert('Palavra não se encontra mapeada!', 'error')
             }
         } else {
             let sumIteracoes = 0
@@ -113,15 +117,19 @@ const HashIndex = () => {
             // console.log(
             //     `A palavra "${objetoRetornado?.palavra}" está na página no disco de número = ${objetoRetornado?.index}`
             // );
-            setQuantidadeAcessosIndice(sumIteracoes)
-            setTuplaIndice(objetoRetornado)
-            const isPresente = paginas[objetoRetornado?.index].includes(
-                objetoRetornado?.palavra
-            );
-            if (isPresente) {
-                // console.log(
-                //     `foi confirmado que a palavra se encontra na página no disco de número = ${objetoRetornado.index} `
-                // );
+            if (objetoRetornado) {
+                setQuantidadeAcessosIndice(sumIteracoes)
+                setTuplaIndice(objetoRetornado)
+                const isPresente = paginas[objetoRetornado?.index].includes(
+                    objetoRetornado?.palavra
+                );
+                if (isPresente) {
+                    showAlert(`Foi confirmado... Palavra esta contida de fato na página: ${objetoRetornado.index}`, 'success')
+                } else { 
+                    showAlert('Palavra não esta contido na pagina esperada!', 'info')
+                }
+            } else {
+                showAlert('Palavra não se encontra mapeada!', 'error')
             }
         }
     };
@@ -142,8 +150,13 @@ const HashIndex = () => {
                 return objetoEncontrado;
             }
         });
-        setTupla(objetoEncontrado)
-        setQuantidadeDeAcessos(paginasPassadas);
+        if (objetoEncontrado) {
+            setTupla(objetoEncontrado)
+            setQuantidadeDeAcessos(paginasPassadas);
+            showAlert('Palavra encontrada!', 'success')
+        } else {
+            showAlert('Palavra não esta presente no disco!', 'error')
+        }
     };
 
     return (
