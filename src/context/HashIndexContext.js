@@ -28,7 +28,7 @@ const HashIndexContextProvider = props => {
 
     const [tamanhoPagina, setTamanhoPagina] = React.useState(0);
     const [quantidadePaginas, setQuantidadePaginas] = React.useState(466549);
-    const [tamanhoBucket, setTamanhoBucket] = React.useState(100);
+    const [tamanhoBucket, setTamanhoBucket] = React.useState(200);
     const [quantidadeBuckets, setQuantidadeBuckets] = React.useState(Math.ceil(466549 / tamanhoBucket));
 
     const [paginas, setPaginas] = React.useState([]);

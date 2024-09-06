@@ -94,7 +94,11 @@ const HashIndex = () => {
             // );
             if (objetoARetornar) {
                 setQuantidadeAcessosIndice(sumIteracoes)
-                setTuplaIndice(objetoARetornar)
+				const tuplaindice = {
+					objetoARetornar: objetoARetornar,
+					bucketIndex: bucketIndex,
+				}
+                setTuplaIndice(tuplaindice)
                 const isPresente = paginas[objetoARetornar.index].includes(
                     objetoARetornar.palavra
                 );
@@ -119,7 +123,11 @@ const HashIndex = () => {
             // );
             if (objetoRetornado) {
                 setQuantidadeAcessosIndice(sumIteracoes)
-                setTuplaIndice(objetoRetornado)
+				const tuplaindice = {
+					objetoARetornar: objetoRetornado,
+					bucketIndex: bucketIndex,
+				}
+                setTuplaIndice(tuplaindice)
                 const isPresente = paginas[objetoRetornado?.index].includes(
                     objetoRetornado?.palavra
                 );
@@ -318,14 +326,6 @@ const HashIndex = () => {
                     fullWidth
                     variant="outlined"
                     focused
-                    sx={{
-                        "& :hover": {
-                            cursor: "not-allowed",
-                            pointerEvents: "none",
-                        },
-                        cursor: "not-allowed",
-                        pointerEvents: "none",
-                    }}
                     slotProps={{
                         textField: {
                             InputProps: {
@@ -334,7 +334,7 @@ const HashIndex = () => {
                         },
                     }}
                     label="Tupla Encontrada (pesquisa por índice) :"
-                    value={tuplaIndice ? `( chave = ${tuplaIndice.palavra} , numeroPagina = ${tuplaIndice.index} )` : ''}
+                    value={tuplaIndice ? `( indice = ${tuplaIndice.bucketIndex} , chave = ${tuplaIndice.objetoARetornar.palavra} , pagina = ${tuplaIndice.objetoARetornar.index} )` : ''}
                 />
             </Grid>
             <Grid size={{ md: 2.89 }}>
